@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/content_main.xml" value="0.18" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_business.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_culture.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_environment.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_fashion.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_home.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_science.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_society.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_sports.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_world.xml" value="0.13177083333333334" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/nav_header.xml" value="0.16354166666666667" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/menu/nav_menu.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
