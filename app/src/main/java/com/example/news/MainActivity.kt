@@ -3,15 +3,19 @@ package com.example.news
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
+import com.example.news.network.NewsClient
 import com.example.news.ui.adapters.PagerAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.*
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -65,6 +69,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         })
+
+
+
+
 
     }
 
