@@ -2,6 +2,7 @@ package com.example.news.repository
 
 import android.content.Context
 import com.example.news.network.RemoteSource
+import com.example.news.repository.model.APIResponse
 import com.example.news.repository.model.News
 
 
@@ -23,8 +24,7 @@ class Repository(var context: Context, var remoteSource: RemoteSource): Reposito
         }
 
     }
-    override suspend fun getAllNews(): News {
+    override suspend fun getAllNews(): APIResponse {
         return remoteSource.getAllNews()
     }
 }
-

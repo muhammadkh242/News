@@ -31,8 +31,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-       viewModel.news.observe(viewLifecycleOwner) {
-            //binding.textView.text = it.results[0].sectionName
+        viewModel.news.observe(viewLifecycleOwner) {
+            binding.textView.text = it.toString()
 
             Log.i(TAG, "response test: ${it.toString()}")
 
