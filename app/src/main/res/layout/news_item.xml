@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                    <TextView
+                        android:background="#90ee90"
+                        android:id="@+id/title"
+                        android:text="title"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_margin="8dp"
+                        android:padding="5dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:text="name"
+                        android:textColor="#008000"
+                        android:textSize="15dp"
+                        app:layout_constraintStart_toStartOf="@id/title"
+                        app:layout_constraintTop_toBottomOf="@id/title"
+                        android:layout_margin="8dp"
+                        android:padding="5dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/description"
+                        android:text="Bitcoin surged 4.41% to $46,499.29 at 22:07 GMT on Sunday, adding $1,963.64 to its previous close."
+                        app:layout_constraintStart_toStartOf="@id/title"
+                        app:layout_constraintTop_toBottomOf="@id/name"
+                        android:layout_margin="8dp"
+                        android:padding="5dp"
+                        app:layout_constraintEnd_toStartOf="@id/imageView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                
+                    <ImageView
+                        android:id="@+id/imageView"
+                        app:layout_constraintTop_toBottomOf="@id/name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_margin="8dp"
+                        android:layout_width="140dp"
+                        android:layout_height="120dp"/>
+
+                    <TextView
+                        android:id="@+id/author"
+                        android:text="Author"
+                        android:textColor="#8F00FF"
+                        android:textStyle="italic"
+                        app:layout_constraintStart_toStartOf="@id/description"
+                        app:layout_constraintTop_toBottomOf="@id/imageView"
+                        android:layout_margin="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:text="2022-04-05T20:45:58Z"
+                        app:layout_constraintStart_toStartOf="@id/description"
+                        app:layout_constraintTop_toBottomOf="@id/author"
+                        android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
