@@ -2,7 +2,6 @@ package com.example.news.network
 
 import android.util.Log
 import com.example.news.repository.model.APIResponse
-import com.example.news.repository.model.News
 import retrofit2.Call
 import retrofit2.Response
 

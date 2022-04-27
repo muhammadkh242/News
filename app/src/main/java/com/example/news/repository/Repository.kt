@@ -3,7 +3,6 @@ package com.example.news.repository
 import android.content.Context
 import com.example.news.network.RemoteSource
 import com.example.news.repository.model.APIResponse
-import com.example.news.repository.model.News
 
 
 

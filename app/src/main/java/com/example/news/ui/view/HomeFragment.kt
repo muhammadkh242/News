@@ -1,23 +1,20 @@
 package com.example.news.ui.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.example.news.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.news.databinding.FragmentHomeBinding
 import com.example.news.network.NewsClient
 import com.example.news.repository.Repository
-import com.example.news.repository.model.News
+import com.example.news.repository.model.APIResponse
+import com.example.news.ui.adapters.NewsAdapter
 import com.example.news.ui.viewmodel.NewsViewModel
 import com.example.news.ui.viewmodel.NewsViewModelFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import javax.security.auth.callback.Callback
+
 
 
 class HomeFragment : Fragment() {
@@ -31,18 +28,26 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModel.news.observe(viewLifecycleOwner) {
-            binding.textView.text = it.toString()
+        setUpRecyclerView()
 
-            Log.i(TAG, "response test: ${it.toString()}")
+        observeNews()
 
-        }
-        /*GlobalScope.launch(Dispatchers.Main) {
-            val res = NewsClient.getInstance().getAllNews()
-            Log.i("TAG", "RESPONSE BODY TOTAL: ${res.toString()}")
-
-        }*/
         return binding.root
+    }
+
+    private fun setUpRecyclerView() = binding.apply {
+        newsRecycler.layoutManager = LinearLayoutManager(requireContext())
+        newsRecycler.adapter = NewsAdapter(requireContext())
+    }
+
+    private fun observeNews(){
+        viewModel.news.observe(viewLifecycleOwner) {
+            fillNewsData(it)
+        }
+    }
+
+    private fun fillNewsData(apiResponse: APIResponse) = binding.apply {
+        (newsRecycler.adapter as NewsAdapter).setData(apiResponse.articles)
     }
 
 
