@@ -14,4 +14,7 @@
     <string name="close">Close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_entertainment">Entertainment</string>
+    <string name="title_technology">Technology</string>
+    <string name="title_health">Health</string>
 </resources>

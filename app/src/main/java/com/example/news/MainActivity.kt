@@ -84,14 +84,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         viewPager.apply {
             when(id){
                 R.id.nav_home -> currentItem = 0
-                R.id.nav_world -> currentItem = 1
-                R.id.nav_science -> currentItem = 2
-                R.id.nav_sport -> currentItem = 3
-                R.id.nav_environment -> currentItem = 4
-                R.id.nav_society -> currentItem = 5
-                R.id.nav_fashion -> currentItem = 6
-                R.id.nav_business -> currentItem = 7
-                R.id.nav_culture -> currentItem = 8
+                R.id.nav_science -> currentItem = 1
+                R.id.nav_sport -> currentItem = 2
+                R.id.nav_entertainment -> currentItem = 3
+                R.id.nav_business -> currentItem = 4
+                R.id.nav_technology -> currentItem = 5
+                R.id.nav_health -> currentItem = 6
+
+
             }
         }
         drawerLayout.closeDrawer(Gravity.START)

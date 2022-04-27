@@ -8,10 +8,9 @@ import retrofit2.http.Query
 
 interface NewsService {
     //@GET("search")
-    @GET("everything")
-
+    @GET("top-headlines")
     suspend fun getAllNews(
-        @Query("q") q:String = "bitcoin",
+        @Query("category") category:String = "general",
         @Query("apiKey") app_id: String = "a1c2f37b0a744dcf9026ae1e1bcee545"
     ): APIResponse
 }
