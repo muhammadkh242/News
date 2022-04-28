@@ -16,8 +16,7 @@ class PagerAdapter(manager: FragmentManager, lifecycle: Lifecycle): FragmentStat
             2 -> SportsFragment()
             3 -> EntertainmentFragment()
             4 -> BusinessFragment()
-            5 -> TechnologyFragment()
-            6 -> HealthFragment()
+            5 -> HealthFragment()
 
             else -> {HomeFragment()}
         }

@@ -5,17 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
-import com.example.news.network.NewsClient
 import com.example.news.ui.adapters.PagerAdapter
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
-import kotlinx.coroutines.*
-import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -70,10 +70,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         })
 
-
-
-
-
     }
 
 
@@ -88,8 +84,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.nav_sport -> currentItem = 2
                 R.id.nav_entertainment -> currentItem = 3
                 R.id.nav_business -> currentItem = 4
-                R.id.nav_technology -> currentItem = 5
-                R.id.nav_health -> currentItem = 6
+                R.id.nav_health -> currentItem = 5
 
 
             }
@@ -97,4 +92,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(Gravity.START)
         return true
     }
+/*
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        val search = menu.findItem(R.id.app_bar_search)
+        val searchView = search.actionView as SearchView
+        searchView.queryHint = "Search"
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.i("TAG", "onQueryTextSubmit: $query")
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.i("TAG", "onQueryTextSubmit: $newText")
+                return true
+            }
+
+        })
+        return super.onCreateOptionsMenu(menu)
+
+    }*/
 }

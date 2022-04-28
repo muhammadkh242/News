@@ -22,10 +22,7 @@
         android:id="@+id/nav_business"
         android:icon="@drawable/briefcase"
         android:title="@string/title_business" />
-    <item
-        android:id="@+id/nav_technology"
-        android:icon="@drawable/innovation"
-        android:title="@string/title_technology"/>
+
     <item
         android:id="@+id/nav_health"
         android:icon="@drawable/heartbeat"

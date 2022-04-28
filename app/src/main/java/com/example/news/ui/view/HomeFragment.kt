@@ -1,6 +1,7 @@
 package com.example.news.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import com.example.news.repository.model.APIResponse
 import com.example.news.ui.adapters.NewsAdapter
 import com.example.news.ui.viewmodel.NewsViewModel
 import com.example.news.ui.viewmodel.NewsViewModelFactory
-
+import androidx.appcompat.widget.SearchView
 
 
 class HomeFragment : Fragment() {
@@ -31,6 +32,8 @@ class HomeFragment : Fragment() {
         setUpRecyclerView()
         viewModel.getNews()
         observeNews()
+
+        handleSearchView()
 
         return binding.root
     }
@@ -56,6 +59,21 @@ class HomeFragment : Fragment() {
         (newsRecycler.adapter as NewsAdapter).setData(apiResponse.articles)
     }
 
+    fun handleSearchView() = binding.searchView.apply {
+        queryHint = "Search"
 
+        setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                Log.i(TAG, "onQueryTextSubmit: $p0")
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                Log.i(TAG, "onQueryTextChange: $p0")
+                return false
+            }
+
+        })
+    }
 
 }
