@@ -4,5 +4,5 @@ import com.example.news.repository.model.APIResponse
 import retrofit2.Response
 
 interface RemoteSource {
-    suspend fun getAllNews(): APIResponse
+    suspend fun getNewsObject(category: String): APIResponse
 }

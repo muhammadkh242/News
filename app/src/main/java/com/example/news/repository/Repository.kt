@@ -23,7 +23,9 @@ class Repository(var context: Context, var remoteSource: RemoteSource): Reposito
         }
 
     }
-    override suspend fun getAllNews(): APIResponse {
-        return remoteSource.getAllNews()
+    override suspend fun getNewsObject(category: String): APIResponse {
+        return remoteSource.getNewsObject(category = category)
     }
+
+
 }

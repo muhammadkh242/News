@@ -29,10 +29,16 @@ class HomeFragment : Fragment() {
     ): View? {
 
         setUpRecyclerView()
-
+        viewModel.getNews()
         observeNews()
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getNews()
+        observeNews()
     }
 
     private fun setUpRecyclerView() = binding.apply {

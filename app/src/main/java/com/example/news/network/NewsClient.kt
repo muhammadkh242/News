@@ -2,16 +2,15 @@ package com.example.news.network
 
 import android.util.Log
 import com.example.news.repository.model.APIResponse
-import retrofit2.Call
-import retrofit2.Response
 
 class NewsClient: RemoteSource{
     private val TAG = "TAG"
-    override suspend fun getAllNews(): APIResponse {
+    override suspend fun getNewsObject(category: String): APIResponse {
         val newsService = RetrofitHelper.getInstance().create(NewsService::class.java)
-        Log.i(TAG, "getAllNews: ${newsService.getAllNews().toString()}")
-        return newsService.getAllNews()
+        Log.i(TAG, "getAllNews: ${newsService.getNewsObject().articles.size}")
+        return newsService.getNewsObject(category = category)
     }
+
 
     companion object{
         private var instance: NewsClient? = null

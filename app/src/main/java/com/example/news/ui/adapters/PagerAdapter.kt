@@ -12,14 +12,13 @@ class PagerAdapter(manager: FragmentManager, lifecycle: Lifecycle): FragmentStat
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> HomeFragment()
-            1 -> WorldFragment()
-            2 -> ScienceFragment()
-            3 -> SportsFragment()
-            4 -> EnvironmentFragment()
-            5 -> SocietyFragment()
-            6 -> FashionFragment()
-            7 -> BusinessFragment()
-            8 -> CultureFragment()
+            1 -> ScienceFragment()
+            2 -> SportsFragment()
+            3 -> EntertainmentFragment()
+            4 -> BusinessFragment()
+            5 -> TechnologyFragment()
+            6 -> HealthFragment()
+
             else -> {HomeFragment()}
         }
     }
