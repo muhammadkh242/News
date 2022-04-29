@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.news.R
@@ -39,6 +40,8 @@ class BusinessFragment : Fragment() {
     private fun observeNews(){
         viewModel.businessNews.observe(viewLifecycleOwner) {
             fillNewsData(it)
+            binding.progressBar.visibility = ProgressBar.INVISIBLE
+
         }
     }
 
