@@ -1,6 +1,8 @@
 package com.example.news.ui.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,7 +28,14 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
             description.text = currentItem.description
             author.text = currentItem.author
             date.text = currentItem.publishedAt
+
+            cardview.setOnClickListener {
+                Log.i("TAG", "onBindViewHolder: ${currentItem.title}")
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(currentItem.url))
+                context.startActivity(browserIntent)
+            }
         }
+
         Glide.with(context).load(currentItem.urlToImage).centerCrop().into(holder.binding.imageView)
 
     }
