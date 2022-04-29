@@ -2,19 +2,18 @@ package com.example.news.ui.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.Animation.START_ON_FIRST_FRAME
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.news.databinding.NewsItemBinding
 import com.example.news.repository.model.Articles
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     private var selectedItem = -1
@@ -31,16 +30,17 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
         holder.binding.apply {
             title.text = currentItem.title
             name.text = currentItem.source.name
-            description.text = currentItem.description
+            if(currentItem.description !=null &&  currentItem.description.length > 85){
+                description.text = "${currentItem.description.slice(IntRange(0,85))}...."
+            }else{
+                description.text = currentItem.description
+
+            }
             author.text = currentItem.author
-            date.text = currentItem.publishedAt
+            date.text = currentItem.publishedAt.slice(IntRange(0,9))
 
             cardview.setOnClickListener {
-                //it.setBackgroundColor(Color.parseColor("#00FFFF"))
-                it.animation
-                Log.i("TAG", "onBindViewHolder: ${currentItem.title}")
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(currentItem.url))
-
                 context.startActivity(browserIntent)
             }
         }
@@ -60,4 +60,6 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
     }
 
     class ViewHolder(val binding: NewsItemBinding): RecyclerView.ViewHolder(binding.root)
+
+
 }

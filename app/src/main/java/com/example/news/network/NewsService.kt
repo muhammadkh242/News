@@ -11,6 +11,7 @@ interface NewsService {
     @GET("top-headlines")
     suspend fun getNewsObject(
         @Query("category") category:String = "general",
+        @Query("country") country:String = "us",
         @Query("apiKey") app_id: String = "a1c2f37b0a744dcf9026ae1e1bcee545"
     ): APIResponse
 
