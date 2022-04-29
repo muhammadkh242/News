@@ -2,23 +2,29 @@ package com.example.news.ui.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.Animation.START_ON_FIRST_FRAME
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.news.databinding.NewsItemBinding
 import com.example.news.repository.model.Articles
 
 class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
-
+    private var selectedItem = -1
     private var newsList: List<Articles> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = NewsItemBinding.inflate(LayoutInflater.from(parent.context))
         return ViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var currentItem = newsList[position]
 
@@ -30,8 +36,11 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
             date.text = currentItem.publishedAt
 
             cardview.setOnClickListener {
+                //it.setBackgroundColor(Color.parseColor("#00FFFF"))
+                it.animation
                 Log.i("TAG", "onBindViewHolder: ${currentItem.title}")
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(currentItem.url))
+
                 context.startActivity(browserIntent)
             }
         }
