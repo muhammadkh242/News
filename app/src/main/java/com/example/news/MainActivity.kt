@@ -1,6 +1,7 @@
 package com.example.news
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
         //enable hamburger sign
         toggle.isDrawerIndicatorEnabled
+        toggle.drawerArrowDrawable.color = (Color.parseColor("#005689"))
         toggle.syncState()
 
         pagerAdapter = PagerAdapter(this.supportFragmentManager, this.lifecycle)
