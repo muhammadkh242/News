@@ -27,5 +27,9 @@ class Repository(var context: Context, var remoteSource: RemoteSource): Reposito
         return remoteSource.getNewsObject(category = category)
     }
 
+    override suspend fun getSearchResult(q: String): APIResponse {
+        return remoteSource.getSearchResult(q = q)
+    }
+
 
 }

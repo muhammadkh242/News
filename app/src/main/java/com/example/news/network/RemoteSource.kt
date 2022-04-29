@@ -5,4 +5,5 @@ import retrofit2.Response
 
 interface RemoteSource {
     suspend fun getNewsObject(category: String): APIResponse
+    suspend fun getSearchResult(q: String): APIResponse
 }

@@ -10,13 +10,13 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.news.databinding.ActivitySearchBinding
 import com.example.news.databinding.NewsItemBinding
 import com.example.news.repository.model.Articles
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
-    private var selectedItem = -1
     private var newsList: List<Articles> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = NewsItemBinding.inflate(LayoutInflater.from(parent.context))

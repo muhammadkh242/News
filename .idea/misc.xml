@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/drawable-v24/side_nav_bar.xml" value="0.1475" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1665" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1665" />
         <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/drawable/search_background.xml" value="0.1475" />
         <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/activity_search.xml" value="0.10260416666666666" />
         <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/content_main.xml" value="0.18" />
         <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_business.xml" value="0.13177083333333334" />
         <entry key="..\:/COURSES/Kotlin/NewsApp/News App/app/src/main/res/layout/fragment_culture.xml" value="0.13177083333333334" />

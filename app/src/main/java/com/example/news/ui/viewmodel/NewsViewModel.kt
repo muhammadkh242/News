@@ -31,8 +31,8 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
     private var _healthNews: MutableLiveData<APIResponse> = MutableLiveData()
     var healthNews: LiveData<APIResponse> = _healthNews
 
-    private var _techNews: MutableLiveData<APIResponse> = MutableLiveData()
-    var techNews: LiveData<APIResponse> = _healthNews
+    private var _searchNews: MutableLiveData<APIResponse> = MutableLiveData()
+    var searchNews: LiveData<APIResponse> = _searchNews
 
 
     fun getNews(){
@@ -89,11 +89,12 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
         }
     }
 
-    fun getTechNews(){
+
+    fun getSearchResult(q: String){
         viewModelScope.launch {
-            val newsResponse = _repo.getNewsObject(category = "technology")
+            val newsResponse = _repo.getSearchResult(q = q)
             withContext(Dispatchers.IO){
-                _techNews.postValue(newsResponse)
+                _searchNews.postValue(newsResponse)
             }
         }
     }

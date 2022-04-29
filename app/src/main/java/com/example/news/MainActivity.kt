@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.SearchEvent
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -72,6 +73,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         })
 
+
+
     }
 
 
@@ -94,26 +97,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(Gravity.START)
         return true
     }
-/*
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        val search = menu.findItem(R.id.app_bar_search)
-        val searchView = search.actionView as SearchView
-        searchView.queryHint = "Search"
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.i("TAG", "onQueryTextSubmit: $query")
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                Log.i("TAG", "onQueryTextSubmit: $newText")
-                return true
-            }
-
-        })
-        return super.onCreateOptionsMenu(menu)
-
-    }*/
 }

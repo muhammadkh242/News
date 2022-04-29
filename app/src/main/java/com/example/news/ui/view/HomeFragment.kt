@@ -1,5 +1,6 @@
 package com.example.news.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -66,12 +67,13 @@ class HomeFragment : Fragment() {
 
         setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                Log.i(TAG, "onQueryTextSubmit: $p0")
+                var intent = Intent(requireContext(), SearchActivity::class.java)
+                intent.putExtra("search_word", p0)
+                startActivity(intent)
                 return false
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
-                Log.i(TAG, "onQueryTextChange: $p0")
                 return false
             }
 

@@ -7,8 +7,13 @@ class NewsClient: RemoteSource{
     private val TAG = "TAG"
     override suspend fun getNewsObject(category: String): APIResponse {
         val newsService = RetrofitHelper.getInstance().create(NewsService::class.java)
-        Log.i(TAG, "getAllNews: ${newsService.getNewsObject().articles.size}")
         return newsService.getNewsObject(category = category)
+    }
+
+    override suspend fun getSearchResult(q: String): APIResponse {
+        val newsService = RetrofitHelper.getInstance().create(NewsService::class.java)
+        Log.i(TAG, "getSearchResult: ${newsService.getNewsObject(q).articles.size}")
+        return newsService.getSearchResult(q = q)
     }
 
 
