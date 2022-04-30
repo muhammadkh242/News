@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.news.ui.view.*
 
 class PagerAdapter(manager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(manager, lifecycle){
-    override fun getItemCount(): Int = 9
+    override fun getItemCount(): Int = 6
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
@@ -18,7 +18,7 @@ class PagerAdapter(manager: FragmentManager, lifecycle: Lifecycle): FragmentStat
             4 -> BusinessFragment()
             5 -> HealthFragment()
 
-            else -> {HomeFragment()}
+            else -> {HealthFragment()}
         }
     }
 

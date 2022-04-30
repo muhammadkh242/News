@@ -1,5 +1,6 @@
 package com.example.news.ui.view
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,11 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.Visibility
 import com.example.news.R
 import com.example.news.databinding.FragmentHomeBinding
 import com.example.news.network.NewsClient
@@ -18,6 +22,7 @@ import com.example.news.repository.model.APIResponse
 import com.example.news.ui.adapters.NewsAdapter
 import com.example.news.ui.viewmodel.NewsViewModel
 import com.example.news.ui.viewmodel.NewsViewModelFactory
+import com.example.news.utils.Connection
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -34,7 +39,26 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+       /* if(checkConnection()){
+            setUpRecyclerView()
 
+            viewModel.getNews()
+            observeNews()
+
+            handleSearchView()
+
+            handleRefresher()
+        }
+        else{
+            binding.apply {
+                progressBar.visibility = ProgressBar.INVISIBLE
+                card.visibility = ProgressBar.INVISIBLE
+                searchView.visibility = ProgressBar.INVISIBLE
+                noConnection.setBackgroundResource(R.drawable.no_signal)
+                Toast.makeText(activity, "No Internet Connection", Toast.LENGTH_SHORT).show()
+            }
+
+        }*/
         setUpRecyclerView()
 
         viewModel.getNews()
@@ -44,14 +68,16 @@ class HomeFragment : Fragment() {
 
         handleRefresher()
 
+
+
         return binding.root
     }
 
-    /*override fun onResume() {
+    override fun onResume() {
         super.onResume()
-        viewModel.getNews()
-        observeNews()
-    }*/
+        handleRefresher()
+    }
+    private fun checkConnection(): Boolean = Connection.isOnline(requireContext())
 
     private fun setUpRecyclerView() = binding.apply {
         newsRecycler.layoutManager = LinearLayoutManager(requireContext())
@@ -103,9 +129,16 @@ class HomeFragment : Fragment() {
             resources.getColor(R.color.nav_bar_start,null))
         setOnRefreshListener {
             isRefreshing = true
-            observeNews()
+            refreshFragment()
             Toast.makeText(activity, getString(R.string.updated_just_now),Toast.LENGTH_SHORT).show()
+
+            //observeNews()
+            //Toast.makeText(activity, getString(R.string.updated_just_now),Toast.LENGTH_SHORT).show()
         }
+    }
+    private fun refreshFragment() {
+        val transaction: FragmentTransaction = getParentFragmentManager().beginTransaction()
+        transaction.detach(this).attach(this).commit()
     }
 
 
