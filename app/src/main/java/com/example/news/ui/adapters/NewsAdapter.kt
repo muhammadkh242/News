@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.news.R
 import com.example.news.databinding.ActivitySearchBinding
 import com.example.news.databinding.NewsItemBinding
 import com.example.news.repository.model.APIResponse
@@ -51,7 +52,7 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
         }
 
 
-        Glide.with(context).load(currentItem.urlToImage).centerCrop().into(holder.binding.imageView)
+        Glide.with(context).load(currentItem.urlToImage).centerCrop().placeholder(R.drawable.placeholder).into(holder.binding.imageView)
 
     }
 

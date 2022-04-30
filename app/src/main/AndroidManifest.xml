@@ -12,8 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.News">
         <activity
+            android:name=".ui.view.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.SearchActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

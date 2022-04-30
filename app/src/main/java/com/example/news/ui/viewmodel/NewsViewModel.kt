@@ -94,7 +94,7 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
         viewModelScope.launch {
             val newsResponse = _repo.getSearchResult(q = q)
             withContext(Dispatchers.IO){
-                _searchNews.postValue(newsResponse)
+                _news.postValue(newsResponse)
             }
         }
     }
