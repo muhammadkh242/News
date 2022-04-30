@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.news.databinding.ActivitySearchBinding
 import com.example.news.databinding.NewsItemBinding
+import com.example.news.repository.model.APIResponse
 import com.example.news.repository.model.Articles
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -43,7 +44,12 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(currentItem.url))
                 context.startActivity(browserIntent)
             }
+            shareIcon.setOnClickListener {
+                shareArticle(currentItem)
+            }
+
         }
+
 
         Glide.with(context).load(currentItem.urlToImage).centerCrop().into(holder.binding.imageView)
 
@@ -61,5 +67,11 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
 
     class ViewHolder(val binding: NewsItemBinding): RecyclerView.ViewHolder(binding.root)
 
+    private fun shareArticle(article: Articles){
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.setType("text/plain")
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, "${article.title} : ${article.url}")
+        context.startActivity(Intent.createChooser(sharingIntent, "Share Article"))
+    }
 
 }
