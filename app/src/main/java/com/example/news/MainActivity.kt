@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
         //enable hamburger sign
         toggle.isDrawerIndicatorEnabled
-        toggle.drawerArrowDrawable.color = (Color.parseColor("#005689"))
+        toggle.drawerArrowDrawable.color = (Color.parseColor("#0098A5"))
         toggle.syncState()
 
         pagerAdapter = PagerAdapter(this.supportFragmentManager, this.lifecycle)

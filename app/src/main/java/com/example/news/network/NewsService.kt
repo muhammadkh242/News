@@ -12,14 +12,14 @@ interface NewsService {
     suspend fun getNewsObject(
         @Query("category") category:String = "general",
         @Query("country") country:String = "us",
-        @Query("apiKey") app_id: String = "a1c2f37b0a744dcf9026ae1e1bcee545"
+        @Query("apiKey") app_id: String = "3b137ac75fc84df8acd829c8baaf9509"
     ): APIResponse
 
 
     @GET("everything")
     suspend fun getSearchResult(
         @Query("q") q:String,
-        @Query("apiKey") app_id: String = "a1c2f37b0a744dcf9026ae1e1bcee545"
+        @Query("apiKey") app_id: String = "3b137ac75fc84df8acd829c8baaf9509"
     ): APIResponse
 
 }
