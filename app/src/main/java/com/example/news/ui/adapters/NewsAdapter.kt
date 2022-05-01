@@ -4,19 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.news.R
-import com.example.news.databinding.ActivitySearchBinding
 import com.example.news.databinding.NewsItemBinding
-import com.example.news.repository.model.APIResponse
 import com.example.news.repository.model.Articles
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 
 class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     private var newsList: List<Articles> = listOf()
@@ -63,7 +58,6 @@ class NewsAdapter(private val context: Context): RecyclerView.Adapter<NewsAdapte
     fun setData(articles: List<Articles>){
         this.newsList = articles
         notifyDataSetChanged()
-        Log.i("TAG", "setData: ${newsList.size}")
     }
 
     class ViewHolder(val binding: NewsItemBinding): RecyclerView.ViewHolder(binding.root)

@@ -1,16 +1,20 @@
 package com.example.news.ui.viewmodel
 
+import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.preference.PreferenceManager
+import com.example.news.R
 import com.example.news.repository.RepositoryInterface
 import com.example.news.repository.model.APIResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
+class NewsViewModel(private val _repo: RepositoryInterface, private val application: Application): ViewModel() {
     private val TAG = "TAG"
 
     private var _news: MutableLiveData<APIResponse> = MutableLiveData()
@@ -31,13 +35,12 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
     private var _healthNews: MutableLiveData<APIResponse> = MutableLiveData()
     var healthNews: LiveData<APIResponse> = _healthNews
 
-    private var _searchNews: MutableLiveData<APIResponse> = MutableLiveData()
-    var searchNews: LiveData<APIResponse> = _searchNews
-
+    var country = PreferenceManager.getDefaultSharedPreferences(application.applicationContext)
+        .getString("country", "us")!!
 
     fun getNews(){
         viewModelScope.launch {
-            val newsResponse = _repo.getNewsObject(category = "general")
+            val newsResponse = _repo.getNewsObject(category = "general", country = country)
             withContext(Dispatchers.IO){
                 _news.postValue(newsResponse)
             }
@@ -46,7 +49,7 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
 
     fun getSciNews(){
         viewModelScope.launch {
-            val newsResponse = _repo.getNewsObject(category = "science")
+            val newsResponse = _repo.getNewsObject(category = "science", country = country)
             withContext(Dispatchers.IO){
                 _sciNews.postValue(newsResponse)
             }
@@ -55,7 +58,7 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
 
     fun getBusinessNews(){
         viewModelScope.launch {
-            val newsResponse = _repo.getNewsObject(category = "business")
+            val newsResponse = _repo.getNewsObject(category = "business", country = country)
             withContext(Dispatchers.IO){
                 _businessNews.postValue(newsResponse)
             }
@@ -64,7 +67,7 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
 
     fun getSportsNews(){
         viewModelScope.launch {
-            val newsResponse = _repo.getNewsObject(category = "sports")
+            val newsResponse = _repo.getNewsObject(category = "sports", country = country)
             withContext(Dispatchers.IO){
                 _sportsNews.postValue(newsResponse)
             }
@@ -73,7 +76,7 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
 
     fun getEntertainmentNews(){
         viewModelScope.launch {
-            val newsResponse = _repo.getNewsObject(category = "entertainment")
+            val newsResponse = _repo.getNewsObject(category = "entertainment", country = country)
             withContext(Dispatchers.IO){
                 _entertainmentNews.postValue(newsResponse)
             }
@@ -82,7 +85,7 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
 
     fun getHealthNews(){
         viewModelScope.launch {
-            val newsResponse = _repo.getNewsObject(category = "health")
+            val newsResponse = _repo.getNewsObject(category = "health", country = country)
             withContext(Dispatchers.IO){
                 _healthNews.postValue(newsResponse)
             }
@@ -90,12 +93,16 @@ class NewsViewModel(private val _repo: RepositoryInterface): ViewModel() {
     }
 
 
-    fun getSearchResult(q: String){
+    fun getSearchResult(q: String, sortBy: String){
         viewModelScope.launch {
-            val newsResponse = _repo.getSearchResult(q = q)
+            val newsResponse = _repo.getSearchResult(q = q, sortBy = sortBy)
             withContext(Dispatchers.IO){
                 _news.postValue(newsResponse)
             }
         }
+    }
+    fun checkCountry(){
+        country = PreferenceManager.getDefaultSharedPreferences(application.applicationContext)
+            .getString("country", "us")!!
     }
 }

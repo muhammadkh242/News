@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.news.R
 import com.example.news.databinding.FragmentHealthBinding
-import com.example.news.databinding.FragmentScienceBinding
 import com.example.news.network.NewsClient
 import com.example.news.repository.Repository
 import com.example.news.repository.model.APIResponse
@@ -20,7 +18,8 @@ import com.example.news.ui.viewmodel.NewsViewModelFactory
 
 class HealthFragment : Fragment() {
     private val binding by lazy { FragmentHealthBinding.inflate(layoutInflater) }
-    private val factory by lazy { NewsViewModelFactory(Repository.getInstance(requireContext(), NewsClient.getInstance())) }
+    private val factory by lazy { NewsViewModelFactory(Repository.getInstance(requireContext(), NewsClient.getInstance()),
+        requireActivity().application) }
     private val viewModel by lazy { ViewModelProvider(requireActivity(), factory)[NewsViewModel::class.java] }
 
 
@@ -37,6 +36,7 @@ class HealthFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        viewModel.checkCountry()
         viewModel.getHealthNews()
         observeNews()
     }

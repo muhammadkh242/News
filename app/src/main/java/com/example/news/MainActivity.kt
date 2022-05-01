@@ -1,6 +1,7 @@
 package com.example.news
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,12 +10,14 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.SearchEvent
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.news.ui.adapters.PagerAdapter
+import com.example.news.ui.view.settings.SettingsActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 
@@ -74,7 +77,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         })
 
 
-
     }
 
 
@@ -90,9 +92,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.nav_entertainment -> currentItem = 3
                 R.id.nav_business -> currentItem = 4
                 R.id.nav_health -> currentItem = 5
-
-
             }
+        }
+        if(id == R.id.nav_settings){
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
         drawerLayout.closeDrawer(Gravity.START)
         return true

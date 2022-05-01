@@ -18,7 +18,8 @@ import com.example.news.ui.viewmodel.NewsViewModelFactory
 
 class ScienceFragment : Fragment() {
     private val binding by lazy { FragmentScienceBinding.inflate(layoutInflater) }
-    private val factory by lazy { NewsViewModelFactory(Repository.getInstance(requireContext(), NewsClient.getInstance())) }
+    private val factory by lazy { NewsViewModelFactory(Repository.getInstance(requireContext(), NewsClient.getInstance()),
+        requireActivity().application) }
     private val viewModel by lazy { ViewModelProvider(requireActivity(), factory)[NewsViewModel::class.java] }
 
     override fun onCreateView(
@@ -37,6 +38,7 @@ class ScienceFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        viewModel.checkCountry()
         viewModel.getSciNews()
         observeNews()
     }

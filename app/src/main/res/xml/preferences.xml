@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="prefSettings"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ListPreference
+        android:title="Country"
+        android:defaultValue="us"
+        android:entries="@array/country_entries"
+        app:entryValues="@array/country_values"
+        android:summary="%s"
+        android:key="country"/>
+
+
+
+<!--    <DropDownPreference-->
+<!--        android:title="Country"-->
+<!--        android:defaultValue="us"-->
+<!--        android:entries="@array/country_entries"-->
+<!--        app:entryValues="@array/country_values"-->
+<!--        android:summary="%s"-->
+<!--        android:key="country"/>-->
+
+    <PreferenceCategory
+        android:title="@string/search">
+        <ListPreference
+            android:key="search"
+            android:title="@string/sortby"
+            android:defaultValue="publishedAt"
+            android:entryValues="@array/search_values"
+            android:entries="@array/search_entries"
+            android:summary="%s"/>
+    </PreferenceCategory>
 
 </PreferenceScreen>

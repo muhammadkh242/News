@@ -23,12 +23,12 @@ class Repository(var context: Context, var remoteSource: RemoteSource): Reposito
         }
 
     }
-    override suspend fun getNewsObject(category: String): APIResponse {
-        return remoteSource.getNewsObject(category = category)
+    override suspend fun getNewsObject(category: String, country: String): APIResponse {
+        return remoteSource.getNewsObject(category = category, country = country)
     }
 
-    override suspend fun getSearchResult(q: String): APIResponse {
-        return remoteSource.getSearchResult(q = q)
+    override suspend fun getSearchResult(q: String, sortBy: String): APIResponse {
+        return remoteSource.getSearchResult(q = q, sortBy = sortBy)
     }
 
 

@@ -18,4 +18,12 @@
     <string name="title_technology">Technology</string>
     <string name="title_health">Health</string>
     <string name="updated_just_now">updated just now</string>
+    <string name="title_settings">Settings</string>
+    <string name="search">Search</string>
+    <string name="sortby">Sort By</string>
+    <string name="language">Language</string>
+    <string name="search_news">Search News</string>
+    <string name="eng">English</string>
+
+
 </resources>
