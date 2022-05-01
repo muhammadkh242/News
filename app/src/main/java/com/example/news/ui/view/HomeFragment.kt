@@ -19,6 +19,7 @@ import com.example.news.repository.model.APIResponse
 import com.example.news.ui.adapters.NewsAdapter
 import com.example.news.ui.viewmodel.NewsViewModel
 import com.example.news.ui.viewmodel.NewsViewModelFactory
+import com.example.news.utils.Connection
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -38,7 +39,6 @@ class HomeFragment : Fragment() {
     ): View? {
         setUpRecyclerView()
 
-        viewModel.getNews()
         observeNews()
 
         handleSearchView()
@@ -50,8 +50,6 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.checkCountry()
-        viewModel.getNews()
         observeNews()
     }
 
@@ -63,10 +61,29 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeNews(){
-        viewModel.news.observe(viewLifecycleOwner) {
-            fillNewsData(it)
-            binding.progressBar.visibility = ProgressBar.INVISIBLE
-            binding.refresher.isRefreshing = false
+        if(Connection.isOnline(requireContext())){
+            binding.apply {
+                noConnection.visibility = View.GONE
+                binding.card.visibility = View.VISIBLE
+                searchView.visibility = View.VISIBLE
+            }
+            viewModel.checkCountry()
+            viewModel.getNews()
+            viewModel.news.observe(viewLifecycleOwner) {
+                fillNewsData(it)
+                binding.progressBar.visibility = ProgressBar.INVISIBLE
+                binding.refresher.isRefreshing = false
+            }
+        }else{
+            binding.apply {
+                noConnection.visibility = View.VISIBLE
+                noConnection.setImageResource(R.drawable.wifi)
+                binding.card.visibility = View.INVISIBLE
+                searchView.visibility = View.INVISIBLE
+                progressBar.visibility = ProgressBar.INVISIBLE
+                refresher.isRefreshing = false
+            }
+            Toast.makeText(requireContext(), "Not Internet Connection", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -102,11 +119,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun handleRefresher() = binding.refresher.apply {
-        setColorSchemeColors(resources.getColor(R.color.my_primary,null),
-            resources.getColor(R.color.nav_bar_start,null))
+        setColorSchemeColors(resources.getColor(R.color.my_primary,null))
         setOnRefreshListener {
             isRefreshing = true
-            Toast.makeText(activity, getString(R.string.updated_just_now),Toast.LENGTH_SHORT).show()
+            observeNews()
         }
     }
    /* private fun refreshFragment() {

@@ -23,24 +23,9 @@ class SettingsFragment: PreferenceFragmentCompat() {
         val lang = defaultPref.getString("language", "en")!!
         Log.i("TAG", "onPause: $lang")
        // setLocale(lang)
-//        val config = this.resources.configuration
-//        val locale = Locale(lang)
-//        Locale.setDefault(locale)
-//        config.setLocale(locale)
-//        requireActivity().createConfigurationContext(config)
-//        this.resources.updateConfiguration(config, this.resources.displayMetrics)
+
     }*/
-    private fun setAppLocale(localeCode: String) {
-        val resources: Resources = resources
-        val dm: DisplayMetrics = resources.getDisplayMetrics()
-        val config: Configuration = resources.getConfiguration()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            config.setLocale(Locale(localeCode.toLowerCase()))
-        } else {
-            config.locale = Locale(localeCode.toLowerCase())
-        }
-        resources.updateConfiguration(config, dm)
-    }
+
 
     private fun setLocale(lang: String) {
         val myLocale = Locale(lang)

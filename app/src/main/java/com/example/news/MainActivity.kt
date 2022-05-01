@@ -50,9 +50,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView = findViewById(R.id.nav_view)
         viewPager = findViewById(R.id.viewPager)
         tabLayout = findViewById(R.id.tabLayout)
+
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolBar, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
-        //enable hamburger sign
         toggle.isDrawerIndicatorEnabled
         toggle.drawerArrowDrawable.color = (Color.parseColor("#0098A5"))
         toggle.syncState()
@@ -98,6 +98,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(Intent(this, SettingsActivity::class.java))
         }
         drawerLayout.closeDrawer(Gravity.START)
+
         return true
     }
 
