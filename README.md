@@ -11,7 +11,7 @@ Developed in Kotlin programming using MVVM architectural design pattern.
 - Enable user to search for news articles that contain specific word.
 - Display search results in a specific order based on user's preferences.
 - Enable user to share article.
-- Enable User to open article Url on the browser.
+- Enable User to open article URL on the browser.
 
 ## Screens
 
