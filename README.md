@@ -1,7 +1,8 @@
 # NewsApp
 Android mobile application displays news articles of different categories from different countries.
 
-Developed in Kotlin programming using MVVM architectural design pattern.
+Developed in Kotlin programming using: MVVM architectural design pattern _ 
+Navigation drawer _ ViewPager2 _  Preferences library _ Kotlin coroutines _ Retrofit
 
 ## Features
 
